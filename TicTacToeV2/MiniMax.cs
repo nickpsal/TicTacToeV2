@@ -11,25 +11,26 @@ namespace TicTacToeV2
         public static Tuple<int, int> GetComputerMove(TicTacToeBoard Board, Player Player1, Player Computer)
         {
             int bestScore = int.MinValue;
+            Tuple<int, int> zero = Tuple.Create(-1, -1);
             Tuple<int, int> bestMove = Tuple.Create(-1, -1);
-            for (int row = 0; row < Board.Board.GetLength(0); row++)
+            for (int num = 1; num<10; num++)
             {
-                for (int col = 0; col < Board.Board.GetLength(1); col++)
+                Tuple<int, int> rowcol = Board.Checkifisfree(num);
+                if (!Board.Checkifisfree(num).Equals(zero))
                 {
-                    if (Board.Board[row, col] != Player1.PlayerSymbol && Board.Board[row, col] != Computer.PlayerSymbol)
+                    int row = rowcol.Item1;
+                    int col = rowcol.Item2;
+                    char temp = Board.Board[row, col];
+                    Board.Board[row, col] = Computer.PlayerSymbol; // Simulate the computer's move
+                    int score = Minimax(Board, 0, int.MinValue, int.MaxValue, false, Player1.PlayerSymbol, Computer.PlayerSymbol);
+                    Board.Board[row, col] = temp; // Undo the computer's move
+                    if (score > bestScore)
                     {
-                        char temp = Board.Board[row, col];
-                        Board.Board[row, col] = Computer.PlayerSymbol; // Simulate the computer's move
-                        int score = Minimax(Board, 0, int.MinValue, int.MaxValue, false, Player1.PlayerSymbol, Computer.PlayerSymbol);
-                        Board.Board[row, col] = temp; // Undo the computer's move
-                        if (score > bestScore)
-                        {
-                            bestScore = score;
-                            bestMove = Tuple.Create(row, col);
-                        }
+                        bestScore = score;
+                        bestMove = Tuple.Create(row, col);
                     }
                 }
-            }
+            }            
             return bestMove;
         }
 
