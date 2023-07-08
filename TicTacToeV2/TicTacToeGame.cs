@@ -114,9 +114,9 @@
             int col = move.Item2;
             Board.Board[row, col] = Computer.PlayerSymbol;
             Console.WriteLine("Ο Υπολογιστης επέλεξε τα {0},{1}", row, col);
+            Board.printBoard();
             if (Board.checkifGameisFinished(Computer))
             {
-                Board.printBoard();
                 Console.WriteLine("-".PadLeft(58, '-').PadRight(58, '-'));
                 Console.WriteLine("| Το σκορ Είναι Player1 - Computer : {0} - {1}               |", Player1.PlayerScore, Computer.PlayerScore);
                 Console.WriteLine("-".PadLeft(58, '-').PadRight(58, '-'));
@@ -156,7 +156,7 @@
         {
             Console.WriteLine("Το παίχνιδι αυτό φτιάχτηκε για εκπαιδευτικούς σκοπούς");
             Console.WriteLine("Όνομα Προγραμματιστή : Ψαλτάκης Νικόλαος");
-            Console.WriteLine("(C) 06/2023 using .NET");
+            Console.WriteLine("(C) 06/2023 V 2.0 using .NET");
         }
     }
 }
