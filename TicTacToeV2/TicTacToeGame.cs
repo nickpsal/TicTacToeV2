@@ -9,6 +9,10 @@
             while (true)
             {
                 Console.Clear();
+                Console.WriteLine("-".PadLeft(58, '-').PadRight(58, '-'));
+                Console.WriteLine("|        Παιχνίδι Τρίλιζας Player Vs Computer            |");
+                Console.WriteLine("|     Χρησιμοποιούμε τον Αλγόριθμο Alpha Beta Pruning    |");
+                Console.WriteLine("-".PadLeft(58, '-').PadRight(58, '-'));
                 Console.WriteLine("Θες να παίξουμε y/n");
                 string? choise = Console.ReadLine();
                 if (choise == "y" || choise == "Y")
