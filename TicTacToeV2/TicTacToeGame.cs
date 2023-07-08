@@ -59,6 +59,10 @@
 
         public TicTacToeGame(Player Player1, Player Computer)
         {
+            Console.WriteLine("-".PadLeft(58, '-').PadRight(58, '-'));
+            Console.WriteLine("|        Παιχνίδι Τρίλιζας Player Vs Computer            |");
+            Console.WriteLine("|     Χρησιμοποιούμε τον Αλγόριθμο Alpha Beta Pruning    |");
+            Console.WriteLine("-".PadLeft(58, '-').PadRight(58, '-'));
             Random random = new();
             int num = random.Next(1, 100);
             if (num % 2 == 0)
